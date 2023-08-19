@@ -87,38 +87,5 @@
             </div>
         </div>
     </section>
-
-    {{-- <div class="bg-gray-50 items-center mt-24 relative">
-        <div class="bg-black opacity-50 absolute w-full h-full z-10 lg:block"></div>
-        <section class="w-full h-screen bg-cover bg-center py-32 relative" style="background-image: url('/images/A7C00935-1.jpg');">
-            <div class="container mx-auto text-center text-white z-40 absolute">
-                <h1 class="text-5xl font-medium mb-6">Welcome to My Agency</h1>
-                <p class="text-xl mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio,
-                    gravida pellentesque urna varius vitae.</p>
-                <a href="#" class="bg-indigo-500 text-white py-4 px-12 rounded-full hover:bg-indigo-600">Demo</a>
-            </div>
-        </section>
-    </div>
-    <div class="container py-32 mx-auto text-center sm:px-4 tails-selected-element" contenteditable="true">
-
-        <h1 class="text-4xl font-extrabold leading-10 tracking-tight text-white sm:text-5xl sm:leading-none md:text-6xl xl:text-7xl"><span class="block">Simplify the way you</span> <span class="relative inline-block mt-3 text-white">design websites</span></h1>
-        <div class="max-w-lg mx-auto mt-6 text-sm text-center text-indigo-200 md:mt-12 sm:text-base md:max-w-xl md:text-lg xl:text-xl" data-primary="indigo-200">If you are ready to change the way you design websites, then you'll want to use our block builder to make it fun and easy!</div>
-        <div data-rounded="rounded-full" class="relative flex items-center max-w-md mx-auto mt-12 overflow-hidden text-center rounded-full">
-            <input type="text" name="email" placeholder="Email Address" class="w-full h-12 px-6 py-2 font-medium text-indigo-800 focus:outline-none" data-primary="indigo-800">
-            
-        </div>
-        <div class="mt-8 text-sm text-indigo-300" data-primary="indigo-600">By signing up, you agree to our terms and services.</div>
-    </div> --}}
-    {{-- <div class="relative overflow-hidden mt-24 h-1/2">
-        <div class="hidden lg:block w-full h-full absolute">
-            <div class="bg-image-mockups absolute z-20 w-full h-full bg-no-repeat bg-auto bg-right-top -right-72 xl:-right-28">
-            </div>
-        </div>
-        <x-front.hero-section>
-            <h1>
-                Memberi Kemudahan dalam Berbisnis
-            </h1>
-        </x-front.hero-section>
-    </div> --}}
     <x-front.footer />
 </x-front-layout>
