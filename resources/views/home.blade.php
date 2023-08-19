@@ -1,4 +1,5 @@
 <x-front-layout>
+    <x-front.navbar />
     <div class="relative overflow-hidden">
         <div class="hidden lg:block w-full h-full absolute">
             <div

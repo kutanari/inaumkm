@@ -15,6 +15,9 @@ use App\Http\Controllers\Front\FrontController;
 */
 
 Route::get('/', [FrontController::class, 'index'])->name('home');
+Route::get('/tentang-kami', [FrontController::class, 'about'])->name('tentang-kami');
+Route::get('/kontak-kami', [FrontController::class, 'contact'])->name('kontak-kami');
+
 
 Route::middleware([
     'auth:sanctum',
