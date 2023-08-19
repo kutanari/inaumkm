@@ -7,6 +7,7 @@
             </div>
         </div>
         <x-front.hero />
+        <x-front.motivation />>
     </div>
     <section class="text-gray-600 body-font" x-data="{shown: false}" x-intersect.half="shown = true">
         <div class="container px-5 py-12 mx-auto flex flex-wrap">
