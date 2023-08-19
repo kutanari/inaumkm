@@ -12,4 +12,9 @@ class FrontController extends Controller
     {
         return view('home');
     }
+
+    public function about(Request $request): View
+    {
+        return view('about');
+    }
 }

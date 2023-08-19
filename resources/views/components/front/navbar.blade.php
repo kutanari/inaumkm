@@ -18,7 +18,7 @@
                     <a href="{{ url('/dashboard') }}"
                         class="px-7 py-3 rounded-full text-primary-ina-red-darker text">Dashboard</a>
                 @else
-                    <a href="{{ route('login') }}" class="px-7 py-3 rounded-full text-primary-ina-red-darker text">Masuk</a>
+                    <a href="{{ route('login') }}" class="px-7 rounded-full text-primary-ina-red-darker text gradient-border-bottom">Masuk</a>
 
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
@@ -35,8 +35,8 @@
         </nav>
     </div>
 
-    <div class="fixed inset-0 z-30 bg-gray-800 bg-opacity-50 lg:hidden" x-transition x-show="shown">
-        <div class="bg-white text-primary-dark-blue flex flex-col text-center mx-5 my-20 py-4 rounded">
+    <div class="fixed inset-0 z-30 bg-gray-800 bg-opacity-7 0 lg:hidden" x-transition x-show="shown">
+        <div class="bg-white text-primary-dark-blue flex flex-col text-center my-20 py-4 rounded">
             <x-front.navlink-mobile :defaultClass="''" activeClass="''" :href="route('home')" :active="request()->routeIs('home')">Home</x-front.navlink-mobile>
             <x-front.navlink-mobile :defaultClass="''" activeClass="''" :href="route('tentang-kami')" :active="request()->routeIs('tentang-kami')">Tentang Kami</x-front.navlink-mobile>
 
@@ -47,7 +47,7 @@
                 <x-front.navlink-mobile :defaultClass="''" activeClass="''" :href="route('dashboard')" :active="request()->routeIs('dashboard')">Beranda</x-front.navlink-mobile>
                 {{-- <a href="{{ url('/dashboard') }}" class="px-7 py-3 rounded-full text-primary-ina-red-darker text">Dashboard</a> --}}
             @else
-                <x-front.navlink-mobile :defaultClass="'text-primar-ina-red'" activeClass="''" :href="route('login')" :active="request()->routeIs('login')">Masuk</x-front.navlink-mobile>
+                <x-front.navlink-mobile :defaultClass="'text-primar-ina-red gradient-border-bottom'" activeClass="''" :href="route('login')" :active="request()->routeIs('login')">Masuk</x-front.navlink-mobile>
                 {{-- <a href="{{ route('login') }}" class="px-7 py-3 rounded-full text-primary-ina-red-darker text">Masuk</a> --}}
 
                 @if (Route::has('register'))
