@@ -6,6 +6,7 @@
                 class="bg-image-mockups absolute z-20 w-full h-full bg-no-repeat bg-auto bg-right-top -right-72 xl:-right-28">
             </div>
         </div>
+        <x-front.hero />
     </div>
     <section class="text-gray-600 body-font" x-data="{shown: false}" x-intersect.half="shown = true">
         <div class="container px-5 py-12 mx-auto flex flex-wrap">
@@ -65,4 +66,5 @@
             </div>
         </div>
     </section>
+    <x-front.footer />
 </x-front-layout>
