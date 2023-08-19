@@ -18,7 +18,7 @@
                     <a href="{{ url('/dashboard') }}"
                         class="px-7 py-3 rounded-full text-primary-ina-red-darker text">Dashboard</a>
                 @else
-                    <a href="{{ route('login') }}" class="px-7 rounded-full text-primary-ina-red-darker text gradient-border-bottom">Masuk</a>
+                    <a href="{{ route('login') }}" class="px-7 rounded-full text-primary-ina-red-darker font-bold">Masuk</a>
 
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
@@ -47,7 +47,7 @@
                 <x-front.navlink-mobile :defaultClass="''" activeClass="''" :href="route('dashboard')" :active="request()->routeIs('dashboard')">Beranda</x-front.navlink-mobile>
                 {{-- <a href="{{ url('/dashboard') }}" class="px-7 py-3 rounded-full text-primary-ina-red-darker text">Dashboard</a> --}}
             @else
-                <x-front.navlink-mobile :defaultClass="'text-primar-ina-red gradient-border-bottom'" activeClass="''" :href="route('login')" :active="request()->routeIs('login')">Masuk</x-front.navlink-mobile>
+                <x-front.navlink-mobile :defaultClass="'text-primary-ina-red font-bold'" activeClass="''" :href="route('login')" :active="request()->routeIs('login')">Masuk</x-front.navlink-mobile>
                 {{-- <a href="{{ route('login') }}" class="px-7 py-3 rounded-full text-primary-ina-red-darker text">Masuk</a> --}}
 
                 @if (Route::has('register'))
