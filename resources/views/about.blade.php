@@ -5,24 +5,24 @@
         <div class="bg-about-hero bg-cover bg-center body-font relative lg:block mt-20 py-10 lg:py-80">
             <div class="mx-auto flex px-5 items-center justify-center flex-col">
                 <div class="text-center lg:w-1/2 w-full text-white z-10">
-                    <h1 class="title-font sm:text-4xl lg:text-6xl text-3xl mb-4 font-bold">Memberi Kemudahan dalam
+                    <h1 class="title-font sm:text-4xl lg:text-6xl text-3xl mb-4 font-bold animate-fade-up animate-once animate-ease-in-out">Memberi Kemudahan dalam
                         Berbisnis</h1>
-                    <p class="mb-8 leading-relaxed text-2xl">Sebuah platform untuk UMKM agar dapat mengembangkan
+                    <p class="mb-8 leading-relaxed text-2xl animate-fade-up animate-once animate-ease-in-out animate-delay-200">Sebuah platform untuk UMKM agar dapat mengembangkan
                         bisnisnya dan bersaing secara nasional maupun global</p>
                 </div>
                 <div class="bg-black opacity-50 w-full h-full block absolute z-0"></div>
             </div>
         </div>
-        <div class="text-gray-600 body-font">
+        <div class="text-gray-600 body-font" x-data="{shown: false}" x-intersect.half="shown = true">
             <div class="container px-5 py-12 mx-auto">
-                <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
+                <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center animate-fade-up animate-once animate-ease-in-out">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                        class="inline-block w-8 h-8 text-gray-400 mb-8" viewBox="0 0 975.036 975.036">
+                        class="inline-block w-8 h-8 text-gray-400 mb-8 animate-fade-up animate-once animate-ease-in-out" x-show="shown" viewBox="0 0 975.036 975.036">
                         <path
                             d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z">
                         </path>
                     </svg>
-                    <p class="leading-relaxed text-lg">Kami memulai Inaproduct dari sebuah keresahan. Pada 2021, jumlah
+                    <p x-show="shown" class="animate-fade-up animate-once animate-ease-in-out leading-relaxed text-lg animate-delay-200">Kami memulai Inaproduct dari sebuah keresahan. Pada 2021, jumlah
                         UMKM di Indonesia mencapai 65 juta unit. UMKM berkontribusi terhadap 60,5% PDB dan 96,9%
                         penyerapan tenaga kerja nasional. Artinya, UMKM memiliki peran signifikan di tingkat nasional.
                         Potensinya masih besar dan masih dapat dikembangkan lagi. Salah satunya di bidang ekspor.
@@ -33,17 +33,17 @@
                 </div>
             </div>
         </div>
-        <div class="text-gray-600 bg-slate-100">
+        <div class="text-gray-600 bg-slate-100" x-data="{shown: false}" x-intersect.half="shown = true">
             <div class="container mx-auto flex px-5 py-12 md:flex-row flex-col items-center">
-                <div
+                <div 
                     class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-                    <h2 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">CEO Kami
+                    <h2 x-show="shown" class="animate-fade-right animate-once animate-ease-in-out title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">CEO Kami
                     </h2>
-                    <p class="mb-8 leading-relaxed">Dengan dukungan yang tepat, UMKM bisa lebih memaksimalkan potensinya
+                    <p x-show="shown" class="animate-fade-right animate-once animate-ease-in-out animate-delay-200 mb-8 leading-relaxed">Dengan dukungan yang tepat, UMKM bisa lebih memaksimalkan potensinya
                         untuk Indonesia. UMKM itu harus naik kelas dan go digital! UMKM harus punya sertifikasi jadi
                         bisa masuk retail, horeka, bahkan ekspor.
                     </p>
-                    <div class="flex justify-center">
+                    <div x-show="shown" class="animate-fade-right animate-once animate-ease-in-out animate-delay-300 flex justify-center">
                         <p>Rama Mugiharto Subagio - CEO Inaproduct</p>
                     </div>
                 </div>
@@ -58,9 +58,9 @@
                 <div class="flex flex-col text-center w-full mb-20">
                     <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Apa yang kami lakukan?</h2>
                 </div>
-                <div class="flex flex-wrap justify-center -m-4 text-center">
+                <div class="flex flex-wrap justify-center -m-4 text-center" x-data="{shown: false}" x-intersect.half="shown = true">
                     <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-                        <div class="px-4 py-6 rounded-lg shadow-xl border border-1 border-slate-200">
+                        <div x-show="shown" class="px-4 py-6 rounded-lg shadow-xl border border-1 border-slate-200 animate-fade-up animate-once animate-ease-in-out">
                             <div class="w-full flex justify-center">
                                 <img src="/images/magnifier.svg" class="w-1/4" alt="direktori">
                             </div>
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-                        <div class="px-4 py-6 rounded-lg shadow-xl border border-1 border-slate-200">
+                        <div x-show="shown" class="px-4 py-6 rounded-lg shadow-xl border border-1 border-slate-200 animate-fade-up animate-once animate-ease-in-out animate-delay-300">
                             <div class="w-full flex justify-center">
                                 <img src="/images/graduation-hat.svg" class="w-1/4" alt="akselerasi">
                             </div>
