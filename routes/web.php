@@ -26,12 +26,11 @@ Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/tentang-kami', [FrontController::class, 'about'])->name('tentang-kami');
 Route::get('/kontak-kami', [FrontController::class, 'contact'])->name('kontak-kami');
 
-
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/dashboard', function () {
+Route::group(['middleware' => ['auth:sanctum', 'verified', 'role:super-admin']], function() {
+    Route::get('/dashboard', function () {
         return view('dashboard');
-    })
-    ->name('dashboard');
+    });
+})->name('dashboard');
 
 Route::prefix('/')
     ->middleware(['auth:sanctum', 'verified'])
