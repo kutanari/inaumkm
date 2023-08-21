@@ -17,4 +17,9 @@ class FrontController extends Controller
     {
         return view('about');
     }
+
+    public function contact(Request $request): View
+    {
+        return view('contact');
+    }
 }

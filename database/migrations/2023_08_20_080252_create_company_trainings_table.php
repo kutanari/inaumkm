@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('company_trainings', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('training_id');
+            $table->boolean('attendance');
+            $table->tinyInteger('exam_score')->nullable();
+            $table->text('observation')->nullable();
+            $table->string('overal_score');
+
             $table->timestamps();
         });
     }
