@@ -39,10 +39,8 @@
         <div class="bg-white text-primary-dark-blue flex flex-col text-center my-20 py-4 rounded">
             <x-front.navlink-mobile :defaultClass="''" activeClass="''" :href="route('home')" :active="request()->routeIs('home')">Home</x-front.navlink-mobile>
             <x-front.navlink-mobile :defaultClass="''" activeClass="''" :href="route('tentang-kami')" :active="request()->routeIs('tentang-kami')">Tentang Kami</x-front.navlink-mobile>
+            <x-front.navlink-mobile :defaultClass="''" activeClass="''" :href="route('kontak-kami')" :active="request()->routeIs('kontak-kami')">Kontak</x-front.navlink-mobile>
 
-            <a class="py-2" href="#">
-                Kontak
-            </a>
             @auth
                 <x-front.navlink-mobile :defaultClass="''" activeClass="''" :href="route('dashboard')" :active="request()->routeIs('dashboard')">Beranda</x-front.navlink-mobile>
                 {{-- <a href="{{ url('/dashboard') }}" class="px-7 py-3 rounded-full text-primary-ina-red-darker text">Dashboard</a> --}}
