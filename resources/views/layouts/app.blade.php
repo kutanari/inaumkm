@@ -26,7 +26,7 @@
         
         @livewireStyles
     </head>
-    <body class="font-sans antialiased dark">
+    <body class="font-sans antialiased @can('list users') dark @endcan">
         <x-banner />
 
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">

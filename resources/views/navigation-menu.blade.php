@@ -149,9 +149,11 @@
                             </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                                @can('list users')
                                 <x-dropdown-link href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}
                                 </x-dropdown-link>
+                                @endcan
                             @endif
 
                             <div class="border-t border-gray-200 dark:border-gray-600"></div>
@@ -257,9 +259,11 @@
                 </x-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                    @can('list users')
                     <x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                         {{ __('API Tokens') }}
                     </x-responsive-nav-link>
+                    @endcan
                 @endif
 
                 <!-- Authentication -->

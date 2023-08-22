@@ -22,4 +22,9 @@ class FrontController extends Controller
     {
         return view('contact');
     }
+
+    public function dashboard(Request $request): View
+    {
+        return view('user-dashboard');
+    }
 }
