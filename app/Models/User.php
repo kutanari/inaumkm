@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -38,7 +39,7 @@ class User extends Authenticatable
         'two_factor_confirmed_at' => 'datetime',
     ];
 
-    public function company()
+    public function company(): HasOne
     {
         return $this->hasOne(Company::class);
     }
