@@ -12,7 +12,7 @@
                     Ikuti kelas training dan dapatkan tips & trik untuk menaikan bisnismu ke level berikutnya.
                 </p>
                 <a href="/register"
-                    class="bg-primary-ina-red px-7 py-3 rounded-full text-neutral-white text-xs bg-gradient-to-r from-primary-ina-red to-primary-ina-red-darker hover:button-brightness mb-7 hover:to-primary-ina-red">
+                    class="animate-once animate-ease-in-out hover:animate-pulse bg-primary-ina-red px-7 py-3 rounded-full text-neutral-white text bg-gradient-to-r from-primary-ina-red to-primary-ina-red-darker hover:button-brightness mb-7 hover:to-primary-ina-red">
                     Daftar Sekarang
                 </a>
             </div>

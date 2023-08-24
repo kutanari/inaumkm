@@ -16,7 +16,7 @@
             <div class="hidden lg:block">
                 @auth
                     <a href="{{ url('/dashboard') }}"
-                        class="px-7 py-3 rounded-full text-primary-ina-red-darker text">Dashboard</a>
+                        class="px-7 py-3 rounded-full text-white text bg-lime-600 animate-once animate-ease-in-out hover:animate-pulse">Beranda</a>
                 @else
                     <a href="{{ route('login') }}" class="px-7 rounded-full text-primary-ina-red-darker font-bold">Masuk</a>
 
@@ -42,7 +42,7 @@
             <x-front.navlink-mobile :defaultClass="''" activeClass="''" :href="route('kontak-kami')" :active="request()->routeIs('kontak-kami')">Kontak</x-front.navlink-mobile>
 
             @auth
-                {{-- <x-front.navlink-mobile :defaultClass="''" activeClass="''" :href="route('dashboard')" :active="request()->routeIs('dashboard')">Beranda</x-front.navlink-mobile> --}}
+                <x-front.navlink-mobile :defaultClass="''" activeClass="''" :href="route('dashboard')" :active="request()->routeIs('dashboard')">Beranda</x-front.navlink-mobile>
                 {{-- <a href="{{ url('/dashboard') }}" class="px-7 py-3 rounded-full text-primary-ina-red-darker text">Dashboard</a> --}}
             @else
                 <x-front.navlink-mobile :defaultClass="'text-primary-ina-red font-bold'" activeClass="''" :href="route('login')" :active="request()->routeIs('login')">Masuk</x-front.navlink-mobile>
