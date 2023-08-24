@@ -46,6 +46,7 @@
                 {{ $slot }}
             </main>
         </div>
+        <x-front.footer />
 
         @stack('modals')
         

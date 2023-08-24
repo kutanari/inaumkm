@@ -2,7 +2,7 @@
     <div class="container">
         <div class="text-center grid grid-cols-1 justify-items-center gap-6 lg:grid-cols-12 lg:gap-0">
             <div class="flex flex-col justify-between lg:justify-self-start lg:col-span-3">
-                <img class="mb-7 w-[170px]" src="images/logo-white.svg" alt="inaproduct logo" />
+                <img class="mb-7 w-[170px]" src="/images/logo-white.svg" alt="inaproduct logo" />
                 <div class="flex justify-between items-center">
                     <a href="https://www.facebook.com/inaproductcom/">
                         <svg class="text-white hover:text-primary-ina-orange fill-current cursor-pointer"
