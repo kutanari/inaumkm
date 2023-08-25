@@ -8,4 +8,18 @@ window.Alpine = Alpine;
 Alpine.plugin(focus);
 Alpine.plugin(intersect);
 
+Alpine.store('darkMode', {
+    on: false,
+    toggle() {
+        this.on = ! this.on;
+    }
+});
+
+Alpine.store('overflow', {
+    hidden: false,
+    toggle() {
+        this.hidden = ! this.hidden;
+    }
+})
+
 Alpine.start();

@@ -26,7 +26,7 @@
         
         @livewireStyles
     </head>
-    <body class="font-sans antialiased @can('list users') dark @endcan">
+    <body x-data class="font-sans antialiased" :class="$store.overflow.hidden && 'overflow-hidden'" :class="$store.darkMode.on && 'dark'">
         <x-banner />
 
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
