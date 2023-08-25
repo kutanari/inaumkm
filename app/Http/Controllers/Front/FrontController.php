@@ -41,4 +41,9 @@ class FrontController extends Controller
     {
         return view('user-company');
     }
+
+    public function editCompany(Request $request): View
+    {
+        return view('user-edit-company');
+    }
 }
