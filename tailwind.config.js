@@ -40,6 +40,7 @@ export default {
                 "header-mobile": "url('/public/images/bg-intro-mobile.svg')",
                 "image-mockups": "url('/public/images/image-mockups.png')",
                 "about-hero": "url('/public/images/team.jpg')",
+                "contact": "url('/public/images/contact.jpg')",
             }),
             backgroundSize: {
                 "custom-mobile-header-size": "100% 50%",

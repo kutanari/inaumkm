@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -12,6 +13,8 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\NumberOfEmployeeController;
 use App\Http\Controllers\Front\FrontController;
 
+use App\Http\Middleware\SuperAdminMiddleware;
+use App\Http\Middleware\NormalUserMiddleware;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,12 +29,15 @@ Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/tentang-kami', [FrontController::class, 'about'])->name('tentang-kami');
 Route::get('/kontak-kami', [FrontController::class, 'contact'])->name('kontak-kami');
 
+Route::group(['middleware' => ['auth:sanctum', 'verified', SuperAdminMiddleware::class]], function() {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+});
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/dashboard', function () {
-        return view('dashboard');
-    })
-    ->name('dashboard');
+Route::group(['middleware' => ['auth:sanctum', 'verified', NormalUserMiddleware::class]], function () {
+    Route::get('/user/dashboard', [FrontController::class, 'dashboard'])->name('user-dashboard');
+    Route::get('/user/company', [FrontController::class, 'company'])->name('user-company');
+    Route::get('/edit/company', [FrontController::class, 'editCompany'])->name('user-edit.company');
+});
 
 Route::prefix('/')
     ->middleware(['auth:sanctum', 'verified'])

@@ -80,7 +80,7 @@
                 </div>
                 <div class="justify-center text-center mt-8">
                     <a href="/register"
-                    class="bg-primary-ina-red px-7 py-3 rounded-full text-neutral-white text-xs bg-gradient-to-r from-primary-ina-red to-primary-ina-red-darker hover:button-brightness mb-7 hover:to-primary-ina-red">
+                    class="bg-primary-ina-red px-7 py-3 rounded-full text-neutral-white text bg-gradient-to-r from-primary-ina-red to-primary-ina-red-darker hover:button-brightness mb-7 hover:to-primary-ina-red">
                     Daftar Sekarang
                 </a>
                 </div>
