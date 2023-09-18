@@ -1,16 +1,12 @@
 @php $editing = isset($category) @endphp
 
 <div class="flex flex-wrap">
-    <x-inputs.group class="w-full">
-        <x-inputs.text
-            name="id"
-            label="Id"
-            :value="old('id', ($editing ? $category->id : ''))"
-            maxlength="255"
-            placeholder="Id"
-            required
-        ></x-inputs.text>
-    </x-inputs.group>
+    <x-inputs.hidden
+        name="id"
+        :value="old('id', ($editing ? $category->id : ''))"
+        maxlength="255"
+        placeholder="Id"
+    ></x-inputs.hidden>
 
     <x-inputs.group class="w-full">
         <x-inputs.text
