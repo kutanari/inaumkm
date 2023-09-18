@@ -36,7 +36,10 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', SuperAdminMiddleware:
 Route::group(['middleware' => ['auth:sanctum', 'verified', NormalUserMiddleware::class]], function () {
     Route::get('/user/dashboard', [FrontController::class, 'dashboard'])->name('user-dashboard');
     Route::get('/user/company', [FrontController::class, 'company'])->name('user-company');
-    Route::get('/edit/company', [FrontController::class, 'editCompany'])->name('user-edit.company');
+    Route::post('/user/company', [FrontController::class, 'updateCompany'])->name('update-company');
+    Route::get('/user/compro/{id}', [FrontController::class, 'previewCompro'])->name('preview-compro');
+    Route::get('/user/compro-download', [FrontController::class, 'downloadCompro'])->name('download-compro');
+    Route::get('/user/product', [FrontController::class, 'manageProduct'])->name('manage-product');
 });
 
 Route::prefix('/')
