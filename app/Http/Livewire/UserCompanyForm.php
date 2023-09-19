@@ -231,7 +231,7 @@ class UserCompanyForm extends Component
 
         session()->flash('message', 'Perubahan berhasil !');
         $this->emit('dataUpdated', $this->persen_completness);
-        $this->emitSelf('postAdded');
+        // $this->emitSelf('postAdded');
         // return redirect()
         //     ->route('user-company', $this->company);
             // ->withSuccess(__('Data berhasil tersimpan'));

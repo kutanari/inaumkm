@@ -4,15 +4,28 @@
             {{ __('Kelola Produk') }} <span class="text-sm underline float-right">
         </h2>
     </x-slot>
+    <div>
+        @if ($errors->any())
+            <x-partials.alert :isError="true" on="dataUpdated">
+                Gagal menyimpan data, silahkan periksa kembali!
+            </x-partials.alert>
+        @endif 
+        @if (session()->has('message'))
+            <x-partials.alert :isError="false" on="dataUpdated">
+                Sukses menyimpan data!
+            </x-partials.alert>
+        @endif
+    </div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <x-partials.card>
                 <div class="mb-5 mt-4">
-                    <div class="flex flex-wrap justify-between">
-                        <div class="md:w-1/2">
-                            <form>
+                    <div class="flex md:flex-row flex-col justify-between">
+                        <div class="md:w-1/2 w-full hidden">
+                            <form class="w-full">
                                 <div class="flex items-center w-full">
                                     <x-inputs.text
+                                        class="py-2"
                                         name="search"
                                         value="{{ $search ?? '' }}"
                                         placeholder="{{ __('crud.common.search') }}"
@@ -22,7 +35,7 @@
                                     <div class="ml-1">
                                         <button
                                             type="submit"
-                                            class="button button-primary"
+                                            class="bg-primary-ina-red w-full md:w-auto content-center text-center text-white rounded-md py-2 px-4 justify-center md:float-right"
                                         >
                                             <i class="icon ion-md-search"></i>
                                         </button>
@@ -30,14 +43,14 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="md:w-1/2 text-right">
+                        <div class=" md:block flex text-right md:mt-0 md:text-rgiht mt-2 w-full">
                             @can('create', App\Models\Product::class)
                             <a
                                 href="{{ route('create-product') }}"
-                                class="button button-primary"
+                                class="bg-primary-ina-red w-full md:w-auto content-center text-center text-white rounded-md py-2 px-4 justify-center md:float-right"
                             >
                                 <i class="mr-1 icon ion-md-add"></i>
-                                @lang('crud.common.create')
+                                Tambahkan
                             </a>
                             @endcan
                         </div>
@@ -49,22 +62,16 @@
                         <thead class="text-gray-700">
                             <tr>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.products.inputs.company_id')
+                                    Nama
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.products.inputs.name')
+                                    Deskripsi
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.products.inputs.description')
+                                    Photo
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.products.inputs.image_path')
-                                </th>
-                                <th class="px-4 py-3 text-left">
-                                    @lang('crud.products.inputs.slug')
-                                </th>
-                                <th class="px-4 py-3 text-left">
-                                    @lang('crud.products.inputs.category_id')
+                                    Kategori
                                 </th>
                                 <th></th>
                             </tr>
@@ -73,20 +80,19 @@
                             @forelse($products as $product)
                             <tr class="hover:bg-gray-50">
                                 <td class="px-4 py-3 text-left">
-                                    {{ optional($product->company)->name ?? '-'
-                                    }}
-                                </td>
-                                <td class="px-4 py-3 text-left">
                                     {{ $product->name ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $product->description ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ $product->image_path ?? '-' }}
-                                </td>
-                                <td class="px-4 py-3 text-left">
-                                    {{ $product->slug ?? '-' }}
+                                    @if ($product->image_path)
+                                    <div class="w-20">
+                                        <img class="" src="{{ asset('storage/' . $product->image_path) }}">
+                                    </div>
+                                    @else
+                                    -
+                                    @endif
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ optional($product->category)->name ?? '-'
@@ -107,7 +113,7 @@
                                     >
                                         @can('update', $product)
                                         <a
-                                            href="{{ route('products.edit', $product) }}"
+                                            href="{{ route('edit-product', $product) }}"
                                             class="mr-1"
                                         >
                                             <button
@@ -121,8 +127,8 @@
                                         </a>
                                         @endcan @can('view', $product)
                                         <a
-                                            href="{{ route('products.show', $product) }}"
-                                            class="mr-1"
+                                            href="{{ route('show-product', $product) }}"
+                                            class="mr-1 hidden"
                                         >
                                             <button
                                                 type="button"
@@ -133,7 +139,7 @@
                                         </a>
                                         @endcan @can('delete', $product)
                                         <form
-                                            action="{{ route('products.destroy', $product) }}"
+                                            action="{{ route('destroy-product', $product) }}"
                                             method="POST"
                                             onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')"
                                         >
@@ -167,7 +173,7 @@
                             <tr>
                                 <td colspan="7">
                                     <div class="mt-10 px-4">
-                                        {!! $products->render() !!}
+                                        {{-- {!! $products->render() !!} --}}
                                     </div>
                                 </td>
                             </tr>

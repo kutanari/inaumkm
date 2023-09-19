@@ -245,42 +245,28 @@
                         </ul>
                     </div>
                 </div>
-                <div class="flex flex-col w-full print:hidden">
-                    <div class="flex-1 bg-white rounded-lg mt-4 p-8">
+                
+                <div class="flex flex-col w-full">
+                    <div class="flex-1 bg-white rounded-lg px-8 pb-8">
                         <h4 class="text-xl text-gray-900 font-bold">Produk</h4>
-                        
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
-                            <div class="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-bold text-sm text-indigo-600">Nama Produk</span>
+                        <div class="grid gap-x-6 grid-cols-3">
+                            @foreach ($company->products as $product)
+                            <div class="">
+                                <div
+                                class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+                                <div class="relative overflow-hidden bg-cover bg-no-repeat">
+                                    <img src="{{ asset('storage/' . $product->image_path) }}" class="w-full rounded-t-lg" />
+                                    <a href="#!">
+                                    <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed"></div>
+                                    </a>
+                                </div>
+                                <div class="p-6">
+                                    <h5 class="mb-4 text-lg font-bold">{{ $product->name }}</h5>
+                                    <p class="mb-4 text-neutral-500 dark:text-neutral-300">{{ $product->description }}</p>
+                                </div>
                                 </div>
                             </div>
-                            <div class="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-bold text-sm text-indigo-600">Nama Produk</span>
-                                </div>
-                            </div>
-                            
-                            <div class="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-bold text-sm text-blue-600">New Connections</span>
-                                    <span class="text-xs bg-gray-200 hover:bg-gray-500 text-gray-500 hover:text-gray-200 px-2 py-1 rounded-lg transition duration-200 cursor-default">7 days</span>
-                                </div>
-                                <div class="flex items-center justify-between mt-6">
-                                    <div>
-                                        <svg class="w-12 h-12 p-2.5 bg-blue-400 bg-opacity-20 rounded-full text-blue-600 border border-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                                    </div>
-                                    <div class="flex flex-col">
-                                        <div class="flex items-end">
-                                            <span class="text-2xl 2xl:text-3xl font-bold">54</span>
-                                            <div class="flex items-center ml-2 mb-1">
-                                                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                                                <span class="font-bold text-sm text-gray-500 ml-0.5">7%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach($company->products)
                         </div>
                     </div>
                 </div>

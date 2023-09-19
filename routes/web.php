@@ -12,7 +12,7 @@ use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\NumberOfEmployeeController;
 use App\Http\Controllers\Front\FrontController;
-
+use App\Http\Controllers\Front\UserProductController;
 use App\Http\Middleware\SuperAdminMiddleware;
 use App\Http\Middleware\NormalUserMiddleware;
 /*
@@ -40,8 +40,13 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', NormalUserMiddleware:
     Route::get('/user/compro/{id}', [FrontController::class, 'previewCompro'])->name('preview-compro');
     Route::get('/user/compro-download', [FrontController::class, 'downloadCompro'])->name('download-compro');
 
-    Route::get('/user/product', [FrontController::class, 'manageProduct'])->name('manage-product');
-    Route::get('/user/product/create', [FrontController::class, 'createProduct'])->name('create-product');
+    Route::get('/user/product', [UserProductController::class, 'manage'])->name('manage-product');
+    Route::post('/user/product', [UserProductController::class, 'store'])->name('store-product');
+    Route::get('/user/product/create', [UserProductController::class, 'create'])->name('create-product');
+    Route::get('/user/product/{product}', [UserProductController::class, 'show'])->name('show-product');
+    Route::delete('/user/product/{product}', [UserProductController::class, 'destroy'])->name('destroy-product');
+    Route::get('/user/product/{product}/edit', [UserProductController::class, 'edit'])->name('edit-product');
+    Route::put('/user/product/{product}', [UserProductController::class, 'update'])->name('update-product');
 });
 
 Route::prefix('/')
