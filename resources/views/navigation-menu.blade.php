@@ -25,6 +25,12 @@
                             </svg>
                         </span>{{ __('Beranda') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('user-company') }}" :active="request()->routeIs('user-company')">
+                        Profil Usaha
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('manage-product') }}" :active="str_contains(url()->current(), route('manage-product'))">
+                        Kelola Produk
+                    </x-nav-link>
                 </div>
 
                 @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) ||
@@ -164,8 +170,8 @@
                             {{-- <x-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-dropdown-link> --}}
-                            <x-dropdown-link href="{{ route('user-company') }}">
-                                {{ __('Profile') }}
+                            <x-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Akun') }}
                             </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -291,7 +297,13 @@
                                     </x-responsive-nav-link>
                                     <!-- Account Management -->
                                     <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                                        {{ __('Profile') }}
+                                        {{ __('Akun') }}
+                                    </x-responsive-nav-link>
+                                    <x-responsive-nav-link href="{{ route('user-company') }}" :active="request()->routeIs('user-company')">
+                                        {{ __('Profil Usaha') }}
+                                    </x-responsive-nav-link>
+                                    <x-responsive-nav-link href="{{ route('manage-product') }}" :active="request()->routeIs('manage-product')">
+                                        {{ __('Kelola Produk') }}
                                     </x-responsive-nav-link>
 
                                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
+use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Company;
 use Illuminate\View\View;
@@ -10,52 +11,53 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\ProductCategory;
+use Spatie\Permission\Models\Role;
 
-class ProductController extends Controller
+class UserProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(Request $request): View
+    public function manage(Request $request): View
     {
-        $this->authorize('view-any', Product::class);
-
         $search = $request->get('search', '');
 
-        $products = Product::search($search)
-            ->latest()
-            ->paginate(5)
-            ->withQueryString();
+        // $products = Product::search($search)
+        //     ->latest()
+        //     ->paginate(5)
+        //     ->withQueryString();
+        
+        $products = auth()->user()->company->products;
 
-        return view('app.products.index', compact('products', 'search'));
+        return view('user-front/user-product', compact('products', 'search'));
     }
-
+   
     /**
      * Show the form for creating a new resource.
      */
     public function create(Request $request): View
     {
-        $this->authorize('create', Product::class);
-
-        $companies = Company::pluck('name', 'id');
         $categories = ProductCategory::pluck('name', 'id');
-
-        return view('app.products.create', compact('companies', 'categories'));
+        
+        return view('user-front/create-product', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProductStoreRequest $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
-        $this->authorize('create', Product::class);
+        if($request->file('image')){
+            $file= $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/Image'), $filename);
+            $data['image']= $filename;
+        }
 
-        $validated = $request->validated();
-
+        $storeRequest = new ProductStoreRequest;
+        $validated = $request->validate($storeRequest->rules());
+        
         $product = Product::create($validated);
 
         return redirect()
-            ->route('products.edit', $product)
+            ->route('manage-product', $product)
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -66,7 +68,7 @@ class ProductController extends Controller
     {
         $this->authorize('view', $product);
 
-        return view('app.products.show', compact('product'));
+        return view('user-front/show-product', compact('product'));
     }
 
     /**
@@ -80,7 +82,7 @@ class ProductController extends Controller
         $categories = ProductCategory::pluck('name', 'id');
 
         return view(
-            'app.products.edit',
+            'user-front/edit-product',
             compact('product', 'companies', 'categories')
         );
     }
@@ -99,7 +101,7 @@ class ProductController extends Controller
         $product->update($validated);
 
         return redirect()
-            ->route('products.edit', $product)
+            ->route('edit-product', $product)
             ->withSuccess(__('crud.common.saved'));
     }
 
@@ -115,7 +117,7 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()
-            ->route('products.index')
+            ->route('manage-product')
             ->withSuccess(__('crud.common.removed'));
     }
 }

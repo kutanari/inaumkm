@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->bigIncrements('id');
             $table->string('label');
             $table->smallInteger('min');
-            $table->smallInteger('max');
+            $table->bigInteger('max');
 
             $table->timestamps();
         });

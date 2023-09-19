@@ -13,6 +13,15 @@ class Company extends Model
     use Searchable;
     use Sluggable;
 
+    public static $jenis_usaha = [
+        'pt' => 'Perseroan Terbatas (PT)',
+        'cv' => 'Persekutuan Komanditer (CV)',
+        'perseorangan' => 'Non Badan Usaha (Perseorangan)',
+        'koperasi' => 'Koperasi',
+        'bumd' => 'Badan Usaha Milik Daerah (BUMD)',
+        'lainnya' => 'Lainnya',
+    ];
+
     protected $fillable = [
         'user_id',
         'name',
@@ -89,5 +98,36 @@ class Company extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+    public static function getPercenCompletness(Company $company): int
+    {
+        $nr_total_field = 19;
+        $complete = 0;
+        
+        if ( ! empty($company->name) ) $complete++;
+        if ( ! empty($company->founder_name) ) $complete++;
+        if ( ! empty($company->address) ) $complete++;
+        if ( ! empty($company->description) ) $complete++;
+        if ( ! empty($company->category_id) ) $complete++;
+        if ( ! empty($company->business_type) ) $complete++;
+        if ( ! empty($company->number_of_employee_id) ) $complete++;
+
+        if ( ! empty($company->logo_picture) ) $complete++;
+        if ( ! empty($company->profile_picture) ) $complete++;
+
+        if ( ! empty($company->contact_name) ) $complete++;
+        if ( ! empty($company->contact_email) ) $complete++;
+        if ( ! empty($company->contact_number) ) $complete++;
+        if ( ! empty($company->city) ) $complete++;
+        if ( ! empty($company->district) ) $complete++;
+        if ( ! empty($company->subdistrict) ) $complete++;
+        if ( ! empty($company->established_year) ) $complete++;
+        
+        if ( ! empty($company->nib) ) $complete++;
+        if ( ! empty($company->no_akta) ) $complete++;
+        if ( ! empty($company->siup) ) $complete++;
+
+        return ($complete / $nr_total_field) * 100;
     }
 }

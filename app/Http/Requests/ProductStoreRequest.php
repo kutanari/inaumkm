@@ -25,7 +25,7 @@ class ProductStoreRequest extends FormRequest
             'description' => ['required', 'max:255', 'string'],
             'image_path' => ['required', 'max:255', 'string'],
             'slug' => ['required', 'max:255', 'string'],
-            'category_id' => ['required', 'exists:categories,id'],
+            'category_id' => ['required', 'exists:product_categories,id'],
         ];
     }
 }
