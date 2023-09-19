@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Company;
-use App\Models\Category;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use App\Models\ProductCategory;
 
 class ProductController extends Controller
 {
@@ -38,7 +38,7 @@ class ProductController extends Controller
         $this->authorize('create', Product::class);
 
         $companies = Company::pluck('name', 'id');
-        $categories = Category::pluck('name', 'id');
+        $categories = ProductCategory::pluck('name', 'id');
 
         return view('app.products.create', compact('companies', 'categories'));
     }
@@ -77,7 +77,7 @@ class ProductController extends Controller
         $this->authorize('update', $product);
 
         $companies = Company::pluck('name', 'id');
-        $categories = Category::pluck('name', 'id');
+        $categories = ProductCategory::pluck('name', 'id');
 
         return view(
             'app.products.edit',

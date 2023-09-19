@@ -17,11 +17,6 @@ class Category extends Model
 
     protected $searchableFields = ['*'];
 
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
-
     public function company()
     {
         return $this->hasOne(Company::class);
