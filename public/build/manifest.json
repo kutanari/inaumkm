@@ -1,0 +1,32 @@
+{
+  "public/images/bg-intro-desktop.svg": {
+    "file": "assets/bg-intro-desktop-05f324e9.svg",
+    "src": "public/images/bg-intro-desktop.svg"
+  },
+  "public/images/bg-intro-mobile.svg": {
+    "file": "assets/bg-intro-mobile-98f7321f.svg",
+    "src": "public/images/bg-intro-mobile.svg"
+  },
+  "public/images/contact.jpg": {
+    "file": "assets/contact-3943b33b.jpg",
+    "src": "public/images/contact.jpg"
+  },
+  "public/images/image-mockups.png": {
+    "file": "assets/image-mockups-9294a697.png",
+    "src": "public/images/image-mockups.png"
+  },
+  "public/images/team.jpg": {
+    "file": "assets/team-342fe152.jpg",
+    "src": "public/images/team.jpg"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-e5febfa4.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-2a37a84e.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}
