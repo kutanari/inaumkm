@@ -15,11 +15,12 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Livewire\WithFileUploads;
 use Spatie\Browsershot\Browsershot;
-use Spatie\Permission\Models\Role;
 
 class FrontController extends Controller
 {
+    use WithFileUploads;
     public function index(Request $request): View
     {
         return view('home');
@@ -105,38 +106,4 @@ class FrontController extends Controller
         // return $pdf->download(sprintf('%s.pdf', $company->slug));
         
     }
-
-    public function manageProduct(Request $request): View
-    {
-        // $role = Role::find(2);
-        // $role->givePermissionTo('create products');
-        //  $user = auth()->user();
-        //  $user->assignRole('front-user')->revokePermissionTo('create products');//->givePermissionTo('create products');
-        //  dd($user->can('create products'));
-        // // Adding permissions to a user
-        // $user->givePermissionTo('create products');
-
-        // // Adding permissions via a role
-        // $user->assignRole('front-user');
-
-        // $role->givePermissionTo('create products');
-
-        $search = $request->get('search', '');
-
-        $products = Product::search($search)
-            ->latest()
-            ->paginate(5)
-            ->withQueryString();
-
-        return view('user-front/user-product', compact('products', 'search'));
-    }
-
-    public function createProduct(Request $request): View
-    {
-        $categories = ProductCategory::pluck('name', 'id');
-        
-        return view('user-front/create-product', compact('categories'));
-    }
-
-
 }
