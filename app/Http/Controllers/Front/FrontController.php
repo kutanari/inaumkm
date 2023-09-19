@@ -7,6 +7,8 @@ use App\Http\Requests\CompanyUpdateRequest;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\NumberOfEmployee;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Contracts\View\View;
@@ -14,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Browsershot\Browsershot;
+use Spatie\Permission\Models\Role;
 
 class FrontController extends Controller
 {
@@ -45,7 +48,7 @@ class FrontController extends Controller
         }
 
         $persen_completness = Company::getPercenCompletness($company);
-        return view('user-dashboard', compact('persen_completness'));
+        return view('user-front/user-dashboard', compact('persen_completness'));
     }
 
     public function company(Request $request): View
@@ -56,7 +59,7 @@ class FrontController extends Controller
         $jenis_usaha = Company::$jenis_usaha;
         $company = auth()->user()->company;
 
-        return view('user-company',
+        return view('user-front/user-company',
             compact('company', 'users', 'nr_of_employee', 'categories', 'jenis_usaha')   
         );
     }
@@ -70,11 +73,11 @@ class FrontController extends Controller
         $company = auth()->user()->company;
 
         if ($id == 2) {
-            return view('user-compro-2',
+            return view('user-front/user-compro-2',
                 compact('company', 'users', 'nr_of_employee', 'categories', 'jenis_usaha')
             );
         } else {
-            return view('user-compro',
+            return view('user-front/user-compro',
                 compact('company', 'users', 'nr_of_employee', 'categories', 'jenis_usaha')
             );
         }
@@ -105,6 +108,35 @@ class FrontController extends Controller
 
     public function manageProduct(Request $request): View
     {
-        return view('user-product');
+        // $role = Role::find(2);
+        // $role->givePermissionTo('create products');
+        //  $user = auth()->user();
+        //  $user->assignRole('front-user')->revokePermissionTo('create products');//->givePermissionTo('create products');
+        //  dd($user->can('create products'));
+        // // Adding permissions to a user
+        // $user->givePermissionTo('create products');
+
+        // // Adding permissions via a role
+        // $user->assignRole('front-user');
+
+        // $role->givePermissionTo('create products');
+
+        $search = $request->get('search', '');
+
+        $products = Product::search($search)
+            ->latest()
+            ->paginate(5)
+            ->withQueryString();
+
+        return view('user-front/user-product', compact('products', 'search'));
     }
+
+    public function createProduct(Request $request): View
+    {
+        $categories = ProductCategory::pluck('name', 'id');
+        
+        return view('user-front/create-product', compact('categories'));
+    }
+
+
 }

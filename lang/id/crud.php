@@ -3,7 +3,7 @@
 return [
     'common' => [
         'actions' => 'Actions',
-        'create' => 'Create',
+        'create' => 'Buat',
         'edit' => 'Edit',
         'update' => 'Update',
         'new' => 'New',
@@ -14,9 +14,9 @@ return [
         'delete' => 'Delete',
         'delete_selected' => 'Delete selected',
         'search' => 'Search...',
-        'back' => 'Back to Index',
+        'back' => 'Kembali',
         'are_you_sure' => 'Are you sure?',
-        'no_items_found' => 'No items found',
+        'no_items_found' => 'Data masih kosong',
         'created' => 'Successfully created',
         'saved' => 'Saved successfully',
         'removed' => 'Successfully removed',

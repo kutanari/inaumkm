@@ -28,7 +28,7 @@
                     <x-nav-link href="{{ route('user-company') }}" :active="request()->routeIs('user-company')">
                         Profil Usaha
                     </x-nav-link>
-                    <x-nav-link href="{{ route('manage-product') }}" :active="request()->routeIs('manage-product')">
+                    <x-nav-link href="{{ route('manage-product') }}" :active="str_contains(url()->current(), route('manage-product'))">
                         Kelola Produk
                     </x-nav-link>
                 </div>
