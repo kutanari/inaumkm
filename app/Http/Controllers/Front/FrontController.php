@@ -84,26 +84,34 @@ class FrontController extends Controller
         }
     }
 
-    public function downloadCompro(Request $request)
+    public function downloadCompro(Request $request, $pdf = '')
     {
         $users = User::pluck('name', 'id');
-        $numberOfEmployees = NumberOfEmployee::pluck('label', 'id');
+        $nr_of_employee = NumberOfEmployee::pluck('label', 'id');
         $categories = Category::pluck('name', 'id');
         $jenis_usaha = Company::$jenis_usaha;
         $company = auth()->user()->company;
 
-        // $pdf = Browsershot::url('http://inaumkm.test/user/compro')->format('A4')->pdf();
-
-        Browsershot::url('http://inaumkm.test/user/compro')
-            ->format('A4')
-            // ->setOption('landscape', true)
-            // ->windowSize(3840, 2160)
-            ->waitUntilNetworkIdle()
-            ->save("storage/" . 'googlescreenshot.pdf');
-            // ->pdf();
-
-        // $pdf = Pdf::loadView('user-compro', compact('company', 'users', 'numberOfEmployees', 'categories'));
-        // return $pdf->download(sprintf('%s.pdf', $company->slug));
-        
+        // if ($id == 2) {
+        //     return view('user-front/user-compro-2',
+        //         compact('company', 'users', 'nr_of_employee', 'categories', 'jenis_usaha')
+        //     );
+        // } else {
+            // return view('user-front/user-compro-pdf',
+            //     compact('company', 'users', 'nr_of_employee', 'categories', 'jenis_usaha')
+            // );
+        // }
+        if(!empty($pdf)){
+            $pdf = PDF::loadView('user-front/user-compro-pdf', compact('company', 'users', 'nr_of_employee', 'categories', 'jenis_usaha'));
+            $pdf->setOption('margin-top', 5);
+            $pdf->setOption('margin-right', 5);
+            $pdf->setOption('margin-bottom', 5);
+            $pdf->setOption('margin-left', 5); 
+            return $pdf->download('compro.pdf');
+        } else {
+            return view('user-front/user-compro-pdf',
+                compact('company', 'users', 'nr_of_employee', 'categories', 'jenis_usaha')
+            );
+        }
     }
 }
