@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', NormalUserMiddleware:
     Route::get('/user/company', [FrontController::class, 'company'])->name('user-company');
     Route::post('/user/company', [FrontController::class, 'updateCompany'])->name('update-company');
     Route::get('/user/compro/{id}', [FrontController::class, 'previewCompro'])->name('preview-compro');
-    Route::get('/user/compro-download', [FrontController::class, 'downloadCompro'])->name('download-compro');
+    Route::get('/user/compro-download/{pdf?}', [FrontController::class, 'downloadCompro'])->name('download-compro');
 
     Route::get('/user/product', [UserProductController::class, 'manage'])->name('manage-product');
     Route::post('/user/product', [UserProductController::class, 'store'])->name('store-product');
